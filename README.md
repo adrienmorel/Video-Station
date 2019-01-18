@@ -102,6 +102,8 @@ Using the default settings, simply browse to https://localhost:8080. You can:
 - create/remove playlist
 - look history
 
+Other ways, there is a example online : https://video-station.herokuapp.com/#!/login
+
 ## Customization
 
 The project uses YAML config files to define global settings such as: server host, server port, API endpoints, etc. You can edit them as you like.
