@@ -26,6 +26,7 @@ server:
     css: 'view/css'
     template: 'view/template'
     blockUI: 'view/blockUI'
+    assets: 'view/assets'
   minifier:
     js:
       package: 'package.yml'

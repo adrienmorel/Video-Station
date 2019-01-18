@@ -66,6 +66,15 @@ class Server {
 			)
 		);
 
+
+		// authorize access to public directory to server html, css, js
+		this.server.use(
+			"/assets",
+			express.static(
+				path.join(process.cwd(), `${config.serverConfig.server.public.assets}`)
+			)
+		);
+
 		this.server.use(
 			"/blockUI",
 			express.static(
