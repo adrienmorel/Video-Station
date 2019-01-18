@@ -102,7 +102,7 @@ Using the default settings, simply browse to https://localhost:8080. You can:
 - create/remove playlist
 - look history
 
-Other ways, there is a example online : https://video-station.herokuapp.com/#!/login
+Otherwise, there is a example online : https://video-station.herokuapp.com/#!/login
 
 ## Customization
 
