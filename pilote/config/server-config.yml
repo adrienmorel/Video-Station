@@ -1,0 +1,33 @@
+# server information
+server:
+  host: 'localhost'
+  port: 8080
+  api: 'api'
+  token:
+    secret: 'mySecretPassphrase'
+    expire: 86400 # 1 day
+  security:
+    ssl:
+      key: 'server-cert/server_private_clear.key'
+      cert: 'server-cert/server_cert_final.crt'
+    bruteforce:
+      global:
+        freeRetries: 1000
+        minWait: 3600000 # 1h, in ms 
+        maxWait: 3600000 # 1h, in ms
+        lifetime: 3600 #1h, in sec
+      user:
+        freeRetries: 5
+        minWait: 300000 # 5min, in ms 
+        maxWait: 3600000 # 1h, in ms
+  public:
+    root: 'view'
+    js: 'view/js'
+    css: 'view/css'
+    template: 'view/template'
+    blockUI: 'view/blockUI'
+  minifier:
+    js:
+      package: 'package.yml'
+      raw: 'bundle.js'
+      min: 'bundle.min.js'

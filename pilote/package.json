@@ -1,0 +1,34 @@
+{
+  "name": "pilote",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "concat-files": "^0.1.1",
+    "express": "^4.16.1",
+    "express-brute": "^1.0.1",
+    "https": "^1.0.0",
+    "javascript-obfuscator": "^0.13.0",
+    "js-yaml": "^3.10.0",
+    "jsonwebtoken": "^8.1.0",
+    "minifier": "^0.8.1",
+    "minify": "^4.1.0",
+    "mongodb": "^2.2.33",
+    "node-watch": "^0.5.5",
+    "path": "^0.12.7",
+    "uglify-es": "^3.3.9",
+    "uglify-js": "^3.4.9",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
+  }
+}

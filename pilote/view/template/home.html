@@ -1,0 +1,60 @@
+<div class="container">
+		
+	<div class="columns is-centered has-text-centered">
+		<div class="column is-4">
+			<h1 class="title is-1">Your lists</h1>
+			<section class="hero is-fullheight">
+				
+				<div class="hero-head">
+					<form name="createListForm" class="content createListForm is-fullwidth" ng-submit="vm.addList()" novalidate>
+						<div class="field has-addons has-addons-centered">
+							<div class="control is-expanded has-icons-left">
+								<input ng-model="vm.listName" ng-minlength="1" ng-maxlength="25" name="listName" class="input {{(createListForm.listName.$error.minlength || createListForm.listName.$error.maxlength) ? 'is-danger' : ''}}" type="text" placeholder="Groceries, etc." required>
+								<span class="icon is-small is-left">
+									<i class="fas fa-list"></i>
+								</span>
+							</div>
+							<div class="control">
+								<button class="button is-primary" ng-class="vm.loadingClass" type="submit" ng-disabled="createListForm.$invalid">
+									Add
+								</button>
+							</div>
+						</div>
+						<p class="help is-danger" ng-show="createListForm.listName.$error.minlength" class="help-block">The name of the list is too short.</p>
+						<p class="help is-danger" ng-show="createListForm.listName.$error.maxlength" class="help-block">The name of the list is too long.</p>
+					</form>
+					
+					<div ng-switch on="vm.lists.length">
+						<div ng-switch-when="0">
+							<article class="message is-info">
+								<div class="message-body">
+									No list.
+								</div>
+							</article>
+						</div>
+						<div ng-switch-default>
+							<table class="table is-bordered is-striped is-narrow is-fullwidth">
+								<tbody>
+									<tr ng-repeat="list in vm.lists | orderBy: reverse:true">
+										
+											<th><a ng-click="vm.seeList(list._id)">{{list.name}}</a></th>
+											<td>
+												<a ng-click="vm.removeList(list._id)" class="icon is-medium has-text-danger">
+													<i class="fas fa-lg fa-trash"></i>
+												</a>
+											</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+			</div>
+			
+		</section>
+		
+	</div>
+	
+</div>
+
+
+</div>

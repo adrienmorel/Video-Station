@@ -1,0 +1,4 @@
+# server information
+server:
+  host: 'localhost'
+  port: 8083

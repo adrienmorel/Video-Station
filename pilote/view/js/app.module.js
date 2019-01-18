@@ -1,0 +1,1 @@
+const videoStation = angular.module("videoStation", ["ngRoute", "ngSanitize", "ngAnimate", "ngMaterial", "ngMessages", "ngCookies", "blockUI"]);

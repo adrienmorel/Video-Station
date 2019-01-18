@@ -1,0 +1,27 @@
+files:
+  - app.module.js
+  - factory/access.factory.js
+  - factory/api.factory.js
+  - factory/user.factory.js
+  - factory/admin.factory.js
+  - factory/list.factory.js
+  - factory/task.factory.js
+  - factory/video.factory.js
+  - factory/playlist.factory.js
+  - factory/historique.factory.js
+  - controller/menu.controller.js
+  - controller/login.controller.js
+  - controller/home.controller.js
+  - controller/register.controller.js
+  - controller/list.controller.js
+  - controller/search.controller.js
+  - controller/video.controller.js
+  - controller/homePlaylist.controller.js
+  - controller/playlist.controller.js
+  - controller/account.controller.js
+  - controller/admin/application.controller.js
+  - controller/admin/historyOfUsercontroller.js
+  - controller/admin/user.controller.js
+  - controller/admin/register.controller.js
+  - app.config.js
+  - app.run.js

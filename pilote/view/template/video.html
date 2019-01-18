@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="columns is-centered">
+        <div class="column">
+            <section class="hero is-fullheight">
+                <div class="hero-head">
+                    <div class="columns is-centered">
+                        <div class="column is-8">
+                            <h4 class="title">{{vm.video.title}}</h4>
+                        </div>
+                    </div>
+                    <div class="columns is-centered">
+                        <div class="column is-8">
+                            <div class="video-container">
+                                <div ng-switch on="vm.video.brand">
+                                    <div ng-switch-when="Youtube">
+                                        <iframe ng-src="{{ ('https://www.youtube.com/embed/' + vm.video.id) | trustAsResourceUrl }}"
+                                                frameborder="0" width="300" height="200"></iframe>
+                                    </div>
+                                    <div ng-switch-when="Vimeo">
+                                        <iframe ng-src="{{('https://player.vimeo.com/video/' + vm.video.id + '?title=0&byline=0&portrait=0') | trustAsResourceUrl}}"
+                                                width="300" height="200" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                    </div>
+                                    <div ng-switch-default>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-centered">
+                        <div class="column is-6">
+                            <p ng-bind-html="vm.video.description"></p>
+                        </div>
+                        <div class="column is-2">
+                            <md-button class="md-primary md-raised" ng-click="vm.showAdvanced($event)">
+                                Add at a playlist
+                            </md-button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+</div>

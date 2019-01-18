@@ -1,0 +1,93 @@
+<div class="container">
+    <section class="hero is-fullheight">
+        <div class="hero-head">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-full">
+                        <h1 class="title is-1">{{vm.user.email}}</h1>
+                    </div>
+                </div>
+                <div class="columns is-centered">
+                    <div class="column is-one-third">
+                        <div class="content">
+                            <md-content>
+                                <div ng-switch on="vm.user.lastConnexion">
+                                    <div ng-switch-when="null">
+                                        Never connected
+                                    </div>
+                                    <div ng-switch-default>
+                                        Dernière connexion :<br>
+                                        {{vm.user.lastConnexion | date:'dd/MM/yyyy'}}<br>
+                                        à {{vm.user.lastConnexion | date:'H:mm'}}
+                                    </div>
+                                </div>
+                            </md-content>
+                        </div>
+                    </div>
+                    <div class="column is-one-third">
+                        <form name="updateForm" class="updateForm" ng-submit="vm.updateUser()" novalidate>
+                            <div class="field">
+                                <p class="control has-icons-left">
+                                    <input ng-model="vm.email" id="email" name="email" class="input {{(updateForm.email.$invalid && !updateForm.email.$pristine) ? 'is-danger' : ''}}" type="email" placeholder="Email"
+                                    >
+                                    <span class="icon is-small is-left">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                </p>
+                                <p class="help is-danger" ng-show="updateForm.email.$invalid && !updateForm.email.$pristine" class="help-block">This email is invalid.</p>
+                            </div>
+                            <div class="field is-centered">
+                                <div class="control">
+                                    <div class="select {{(updateForm.type.$invalid && !updateForm.type.$pristine) ? 'is-danger' : ''">
+                                        <select ng-model="vm.type" id="type" name="type"
+                                                ng-options="type.name for type in vm.options.type.available track by type.value">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-centered">
+                                <div class="control">
+                                    <div class="select {{(updateForm.state.$invalid && !updateForm.state.$pristine) ? 'is-danger' : ''">
+                                        <select ng-model="vm.state" id="state" name="state"
+                                                ng-options="state.name for state in vm.options.state.available track by state.value">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <p class="control">
+                                <div class="buttons has-addons is-centered">
+                                    <button class="button is-primary is-rounded" ng-class="vm.loadingClass" ng-disabled="updateForm.$invalid" type="submit">
+                                        Modifier
+                                    </button>
+                                </div>
+                                </p>
+                            </div>
+                            <article ng-if="vm.nothingChange" class="message is-danger">
+                                <div class="message-body">
+                                    Nothing field have been changed.
+                                </div>
+                            </article>
+                            <!--<p class="help is-danger" ng-show="vm.nothingChange" class="help-block">Nothing field have been changed.</p>-->
+                        </form>
+
+                        <article ng-if="vm.errorRegister !== undefined" class="message is-danger">
+                            <div class="message-body">
+                                {{vm.errorRegister}}
+                            </div>
+                        </article>
+
+
+
+                    </div>
+                    <div class="column is-one-third">
+                        <button  class="button is-primary is-large is-fullwidth" ng-click="vm.gohistory(vm.user)">
+                            Historique
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

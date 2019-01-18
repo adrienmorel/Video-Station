@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="columns is-centered">
+        <div class="column">
+            <section class="hero is-fullheight">
+                <div class="hero-head">
+                    <div ng-switch on="vm.errorPlaylist">
+                        <div ng-switch-when="undefined">
+                            <form name="vm.playlistForm" ng-submit="vm.addPlaylist()" novalidate>
+                                <div class="column is-6" layout="row" layout-xs="column" layout-sm="column" layout-align="space-between center">
+                                    <md-input-container class="md-block" flex-gt-sm="">
+                                        <label>New Playlist</label>
+                                        <input minlength="1" md-maxlength="25" required="" name="newPlaylist" ng-model="vm.newPlaylist">
+                                        <div ng-messages="vm.playlistForm.newPlaylist.$error">
+                                            <div ng-message="md-maxlength">The name has to be less than 25 characters long.</div>
+                                            <div ng-message="minlength">Playlist have not name</div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-button class="md-raised md-primary" ng-disabled="vm.playlistForm.$invalid" type="submit">Ajouter</md-button>
+                                </div>
+                            </form>
+                            <article ng-if="vm.error !== undefined" class="message is-danger">
+                                <div class="message-body">
+                                    {{vm.error}}
+                                </div>
+                            </article>
+                            <div ng-switch on="vm.videos.search.length">
+                                <div ng-switch-when="0">
+                                    <article class="message is-info">
+                                        <div class="message-body">
+                                            No playlist
+                                        </div>
+                                    </article>
+                                </div>
+                                <div ng-switch-default>
+                                    <md-content>
+                                        <md-list flex="">
+                                            <div ng-repeat="(index, playlist) in vm.playlists">
+                                                <md-list-item class="md-3-line" ng-click="vm.goPlaylist(playlist._id)">
+                                            <span class="column is-8">
+                                                <h6 class="title">{{playlist.name}}</h6>
+                                            </span>
+                                                    <div class="md-secondary">
+                                                <span class="icon has-text-danger" ng-click="vm.removePlaylist(playlist)">
+                                                  <i class="delete is-large"></i>
+                                                </span>
+                                                    </div>
+                                                    <div class="column is-2"></div>
+                                                </md-list-item>
+                                            </div>
+                                        </md-list>
+                                    </md-content>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-switch-default>
+                            <article class="message is-danger">
+                                <div class="message-body">
+                                    {{vm.errorPlaylist}}
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</div>

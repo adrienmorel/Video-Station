@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="columns is-centered">
+        <div class="column">
+            <section class="hero is-fullheight">
+                <div class="hero-head">
+                    <div class="columns">
+                        <div class="column">
+                            <h4 class="title">{{vm.playlist.name}}</h4>
+                        </div>
+                    </div>
+                    <div ng-switch on="vm.playlist.videos.length">
+                        <div ng-switch-when="0">
+                            <article class="message is-info">
+                                <div class="message-body">
+                                    There is not videos in this playlist !
+                                </div>
+                            </article>
+                        </div>
+                        <div ng-switch-default>
+                            <md-content>
+                                <md-list flex="">
+                                    <div ng-repeat="(index, video) in vm.playlist.videos">
+                                        <md-list-item class="md-3-line" ng-click="vm.watch(video.videoId, video.brand)">
+                                            <span class="column is-1">
+                                                <div ng-switch on="video.brand">
+                                                    <div ng-switch-when="Youtube">
+                                                        <i class="fab fa-youtube fa-3x"></i>
+                                                    </div>
+                                                    <div ng-switch-when="Vimeo">
+                                                        <i class="fab fa-vimeo fa-3x"></i>
+                                                    </div>
+                                                    <div ng-switch-default>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <div class="column is-3">
+                                                <figure class="image is-5by3">
+                                                    <img class="img-list" ng-src="{{ video.thumbnails.medium.url }}" alt="Placeholder image">
+                                                </figure>
+                                            </div>
+                                            <div class="md-list-item-text column is-6">
+                                                <h3 class="title">{{video.title}}</h3>
+                                                <br>
+                                                <p ng-bind-html="video.description.substring(0, 175).concat('', '...')"></p>
+                                            </div>
+                                        </md-list-item>
+                                    </div>
+                                </md-list>
+                            </md-content>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

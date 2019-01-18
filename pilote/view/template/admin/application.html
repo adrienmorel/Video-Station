@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="columns is-centered">
+        <div class="column">
+            <section class="hero is-fullheight">
+                <div class="hero-head">
+                    <div class="columns">
+                        <div class="column is-one-fifth">
+                            <button  class="button is-primary is-large is-fullwidth" ng-click="vm.goRegister()">
+                                <i class="fas fa-plus"></i> Add User
+                            </button>
+                        </div>
+                    </div>
+                    <div ng-switch on="vm.accounts.length">
+                        <div ng-switch-when="0">
+                            <article class="message is-info">
+                                <div class="message-body">
+                                    You search nothing yet !
+                                </div>
+                            </article>
+                        </div>
+                        <div ng-switch-default>
+                            <md-content>
+                                <table class="table is-fullwidth is-striped is-hoverable pointer">
+                                    <thead>
+                                    <tr>
+                                        <th><abbr title="Recherche">Email</abbr></th>
+                                        <th><abbr title="Date">Type</abbr></th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th><abbr title="Recherche">Email</abbr></th>
+                                        <th><abbr title="Date">Type</abbr></th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <tr ng-repeat="(index, account) in vm.accounts | orderBy: reverse:true" ng-click="vm.goUser(account)">
+                                        <td>{{account.email}}</td>
+                                        <td>{{account.type}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </md-content>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

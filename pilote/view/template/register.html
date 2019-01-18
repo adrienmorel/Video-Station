@@ -1,0 +1,61 @@
+<div class="container">
+	<div class="columns has-text-centered is-centered">
+		<div class="column is-4">
+			<h1 class="title is-1">Register</h1>
+			<form name="registerForm" class="registerForm" ng-submit="vm.registerUser()" novalidate>
+				
+				<div class="field">
+					<p class="control has-icons-left has-icons-right">
+						<input ng-model="vm.email" id="email" name="email" class="input {{(registerForm.email.$invalid && !registerForm.email.$pristine) ? 'is-danger' : ''}}" type="email" placeholder="Email"
+						required>
+						<span class="icon is-small is-left">
+							<i class="fas fa-envelope"></i>
+						</span>
+					</p>
+					<p class="help is-danger" ng-show="registerForm.email.$invalid && !registerForm.email.$pristine" class="help-block">This email is invalid.</p>
+				</div>
+				<div class="field">
+					<p class="control has-icons-left">
+						<input ng-model="vm.password" ng-minlength="4" ng-maxlength="20" id="password" name="password" class="input {{(registerForm.password.$error.minlength || registerForm.password.$error.maxlength) ? 'is-danger' : ''}}"
+						 type="password" placeholder="Password" required>
+						<span class="icon is-small is-left">
+							<i class="fas fa-lock"></i>
+						</span>
+					</p>
+					<p class="help is-danger" ng-show="registerForm.password.$error.minlength" class="help-block">Password is too short.</p>
+					<p class="help is-danger" ng-show="registerForm.password.$error.maxlength" class="help-block">Password is too long.</p>
+				</div>
+				<div class="field">
+					<p class="control has-icons-left">
+						<input ng-model="vm.confirmPassword" ng-pattern="vm.password" id="confirmPassword" name="confirmPassword" class="input {{(registerForm.confirmPassword.$error.pattern && !registerForm.confirmPassword.$pristine) ? 'is-danger' : ''}}" type="password" placeholder="Password" required>
+						<span class="icon is-small is-left">
+							<i class="fas fa-lock"></i>
+						</span>
+					</p>
+					<p class="help is-danger" ng-show="registerForm.confirmPassword.$error.pattern && !registerForm.confirmPassword.$pristine" class="help-block">Passwords do not match.</p>
+				</div>
+				<div class="field">
+					<p class="control">
+						<div class="buttons has-addons is-centered">
+							<button class="button is-primary is-rounded" ng-class="vm.loadingClass" ng-disabled="registerForm.$invalid" type="submit">
+								Register
+							</button>
+						</div>
+						
+					</p>
+				</div>
+				
+			</form>
+			<div class="content">
+				<a ng-click="vm.goLogin()">Already an account? Login.</a>
+			</div>
+			
+			<article ng-if="vm.errorRegister !== undefined" class="message is-danger">
+				<div class="message-body">
+					{{vm.errorRegister}}
+				</div>
+			</article>
+			
+		</div>
+	</div>
+</div>

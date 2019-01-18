@@ -1,0 +1,79 @@
+<!-- Hero head: will stick at the top -->
+<div class="hero-head">
+	<nav class="navbar is-primary">
+		<div class="navbar-brand">
+			<a class="navbar-item" ng-click="vm.goHome()">
+				VideoStation
+			</a>
+			<div class="navbar-burger burger">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		
+		<div class="navbar-menu" ng-switch on="isLogged">
+			<span ng-switch-when="undefined"></span>
+			<div  ng-switch-default ng-if="isLogged" class="navbar-start">
+				<a class="navbar-item">
+					Acceuil
+				</a>
+
+				<a class="navbar-item" ng-click="vm.goPlaylist()">
+					Playlist
+				</a>
+
+				<a class="navbar-item" ng-click="vm.goAccount()">
+					Compte
+				</a>
+
+				<a class="navbar-item" ng-if="isAdmin" ng-click="vm.goManageApplication()">
+					Gestion Application
+				</a>
+
+
+				<div class="navbar-item">
+					<form novalidate class="formSearch">
+						<div class="columns">
+							<div class="column is-fullwidth">
+								<div class="field is-horizontal">
+									<div class="field-body">
+										<div class="field">
+											<p class="control is-expanded">
+												<input class="input" name="search" ng-model="vm.searchText" type="text" placeholder="Search">
+											</p>
+										</div>
+
+										<div class="field-body">
+											<div class="field">
+												<div class="control">
+													<button class="button is-info" type="submit" ng-click="vm.search()">
+														Search
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div ng-switch-default class="navbar-end">
+				<a ng-if="!isLogged" class="navbar-item" ng-click="vm.goLogin()">
+					Login
+				</a>
+				<a ng-if="!isLogged" class="navbar-item" ng-click="vm.goRegister()">
+					Register
+				</a>
+				<a ng-if="isLogged" class="navbar-item" ng-click="vm.logoutUser()">
+					<span class="icon">
+						<i class="fas fa-sign-out-alt"></i>
+					</span>
+					Logout
+				</a>
+			</div>
+		</div>
+	</nav>
+</div>

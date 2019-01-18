@@ -1,0 +1,12 @@
+pilote/node_modules/
+pilote/package-lock.json
+silos/historiques/node_modules/
+silos/historiques/package-lock.json
+silos/tasks/
+silos/users/node_modules/
+silos/users/package-lock.json
+silos/videos/node_modules/
+silos/videos/package-lock.json
+server_certificate.csr
+server_private.key
+LICENSE.md

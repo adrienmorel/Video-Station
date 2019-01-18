@@ -1,0 +1,49 @@
+<div class="container">
+	<div class="columns has-text-centered is-centered">
+		<div class="column is-4">
+			<h1 class="title is-1">Login</h1>
+			<form name="loginForm" class="loginForm" ng-submit="vm.loginUser()" novalidate>
+				<div class="field">
+					<p class="control has-icons-left">
+						<input ng-model="vm.email" id="email" name="email" class="input {{(loginForm.email.$invalid && !loginForm.email.$pristine) ? 'is-danger' : ''}}" type="email" placeholder="Email" required>
+						<span class="icon is-small is-left">
+							<i class="fas fa-envelope"></i>
+						</span>
+					</p>
+					<p class="help is-danger" ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">This email is invalid.</p>
+				</div>
+				<div class="field">
+					<p class="control has-icons-left">
+						<input ng-model="vm.password" ng-minlength="4" ng-maxlength="20" id="password" name="password" class="input {{(loginForm.password.$error.minlength || loginForm.password.$error.maxlength) ? 'is-danger' : ''}}" type="password" placeholder="Password" required>
+						<span class="icon is-small is-left">
+							<i class="fas fa-lock"></i>
+						</span>
+					</p>
+					<p class="help is-danger" ng-show="loginForm.password.$error.minlength" class="help-block">Password is too short.</p>
+					<p class="help is-danger" ng-show="loginForm.password.$error.maxlength" class="help-block">Password is too long.</p>
+				</div>
+				<div class="field">
+					<p class="control">
+						<div class="buttons has-addons is-centered">
+							<button class="button is-primary is-rounded" ng-class="vm.loadingClass" ng-disabled="loginForm.$invalid" type="submit">
+								Login
+							</button>
+						</div>
+						
+					</p>
+				</div>
+			</form>
+			
+			<div class="content">
+				<a ng-click="vm.goRegister()">No account? Register.</a>
+			</div>
+			
+			<article ng-if="vm.errorLogin !== undefined" class="message is-danger">
+				<div class="message-body">
+					{{vm.errorLogin}}
+				</div>
+			</article>
+			
+		</div>
+	</div>
+</div>

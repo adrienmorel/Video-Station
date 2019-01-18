@@ -1,0 +1,5 @@
+# database login
+database:
+  host: 'localhost'
+  name: 'historiqueApp'
+  port: 12345

@@ -1,0 +1,109 @@
+<div class="container">
+    <div class="columns is-centered">
+        <div class="column">
+            <section class="hero is-fullheight">
+                <div class="hero-head">
+                    <md-progress-linear ng-show="vm.onLoad" md-mode="indeterminate"></md-progress-linear>
+                    <div ng-switch on="vm.videos.search.length">
+                        <div ng-switch-when="0">
+                            <article class="message is-info">
+                                <div class="message-body">
+                                    No video matches your search
+                                </div>
+                            </article>
+                        </div>
+                        <!--<div ng-switch-default>
+                            <div ng-repeat="(index, video) in vm.results">
+                                <div ng-switch on="video.brand">
+                                    <div ng-switch-when="Youtube">
+                                        <div class="columns hover" ng-click="vm.watch(video.id, video.brand)">
+                                            <div class="column is-1">
+                                                <span>
+                                                    <i class="fab fa-youtube fa-3x"></i>
+                                                </span>
+                                            </div>
+                                            <div class="column is-4" >
+                                                <img ng-src="{{ video.thumbnails.medium.url }}" alt="Placeholder image">
+                                            </div>
+                                            <div class="column" >
+                                                <h4 class="title">{{video.title}}</h4>
+                                                <p>{{video.description}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-switch-when="Vimeo">
+                                        <div class="columns hover" ng-click="vm.watch(video.uri, video.brand)">
+                                            <div class="column is-1">
+                                                <span>
+                                                    <i class="fab fa-vimeo fa-3x"></i>
+                                                </span>
+                                            </div>
+                                            <div class="column is-4" >
+                                                <img ng-src="{{ video.pictures.sizes[2].link }}" alt="Placeholder image">
+                                            </div>
+                                            <div class="column" >
+                                                <h4 class="title">{{video.name}}</h4>
+                                                <p>{{video.description}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-switch-default>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div ng-switch-default class="columns is-centered">
+                            <md-content>
+                                <md-list flex="">
+                                    <div ng-repeat="(index, video) in vm.results">
+                                        <div ng-switch on="video.brand">
+                                            <div ng-switch-when="Youtube">
+                                                <md-list-item class="md-3-line" ng-click="vm.watch(video.id, video.brand)">
+                                                    <span class="column is-1">
+                                                        <i class="fab fa-youtube fa-3x"></i>
+                                                    </span>
+                                                    <div class="column is-3">
+                                                        <figure class="image is-5by3" ng-click="vm.watch(video.id, video.brand)">
+                                                            <img class="img-list" ng-src="{{ video.thumbnails.medium.url }}" alt="Placeholder image">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="md-list-item-text column is-6">
+                                                        <h3 class="title">{{video.title}}</h3>
+                                                        <br>
+                                                        <p ng-bind-html="video.description"></p>
+                                                    </div>
+                                                </md-list-item>
+                                            </div>
+                                            <div ng-switch-when="Vimeo">
+                                                <md-list-item class="md-3-line" ng-click="vm.watch(video.uri, video.brand)">
+                                                    <span class="column is-1">
+                                                        <i class="fab fa-vimeo fa-3x"></i>
+                                                    </span>
+                                                    <div class="column is-3">
+                                                        <figure class="image is-5by3" ng-click="vm.watch(video.uri, video.brand)">
+                                                            <img class="img-list" ng-src="{{ video.pictures.sizes[3].link }}" alt="Placeholder image">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="md-list-item-text column is-6">
+                                                        <h4 class="title">{{video.name}}</h4>
+                                                        <br>
+                                                        <p ng-bind-html="video.description"></p>
+                                                    </div>
+                                                </md-list-item>
+                                            </div>
+                                            <div ng-switch-default>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </md-list>
+                            </md-content>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</div>
