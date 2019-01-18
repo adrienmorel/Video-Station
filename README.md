@@ -115,5 +115,5 @@ The project uses YAML config files to define global settings such as: server hos
 
 ## Author
 
-- **Adrien Morel** - *Initial work* - [gaelfoppolo](https://github.com/adrienmorel)
+- **Adrien Morel** - *Initial work* - [Adrien Morel](https://github.com/adrienmorel)
 
