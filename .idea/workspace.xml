@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e40017f4-767b-48e5-87b3-5f61ebe70f1c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pilote/server/api.password.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pilote/view/js/controller/historique.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pilote/view/template/historique.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pilote/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/pilote/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pilote/server/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/pilote/server/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pilote/server/api.noauth.js" beforeDir="false" afterPath="$PROJECT_DIR$/pilote/server/api.noauth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pilote/view/js/app.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/pilote/view/js/app.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pilote/view/js/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/pilote/view/js/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pilote/view/js/controller/account.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/pilote/view/js/controller/account.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pilote/view/js/factory/user.factory.js" beforeDir="false" afterPath="$PROJECT_DIR$/pilote/view/js/factory/user.factory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pilote/view/js/package.yml" beforeDir="false" afterPath="$PROJECT_DIR$/pilote/view/js/package.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pilote/view/template/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/pilote/view/template/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/silos/users/server/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/silos/users/server/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/silos/users/server/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/silos/users/server/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,42 +15,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pilote/view/js/app.config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="96" column="48" lean-forward="true" selection-start-line="96" selection-start-column="48" selection-end-line="96" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pilote/view/js/controller/changepassword.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="49" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pilote/view/template/changepassword.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-              <folding>
-                <element signature="n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-                <element signature="n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pilote/view/js/package.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="43" />
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="209">
+                <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -127,7 +85,6 @@
         <option value="$PROJECT_DIR$/pilote/server/server.js" />
         <option value="$PROJECT_DIR$/pilote/config/server-config.yml" />
         <option value="$PROJECT_DIR$/pilote/view/template/home.html" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/pilote/server/apimailer.js" />
         <option value="$PROJECT_DIR$/pilote/server/apipassword.js" />
         <option value="$PROJECT_DIR$/pilote/server/api.password.js" />
@@ -144,6 +101,7 @@
         <option value="$PROJECT_DIR$/pilote/view/js/controller/changepassword.controller.js" />
         <option value="$PROJECT_DIR$/silos/users/server/models/user.js" />
         <option value="$PROJECT_DIR$/silos/users/server/api.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -169,40 +127,6 @@
               <item name="VideoStation" type="b2602c69:ProjectViewProjectNode" />
               <item name="VideoStation" type="462c0819:PsiDirectoryNode" />
               <item name="pilote" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VideoStation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VideoStation" type="462c0819:PsiDirectoryNode" />
-              <item name="pilote" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VideoStation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VideoStation" type="462c0819:PsiDirectoryNode" />
-              <item name="pilote" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VideoStation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VideoStation" type="462c0819:PsiDirectoryNode" />
-              <item name="pilote" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VideoStation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VideoStation" type="462c0819:PsiDirectoryNode" />
-              <item name="pilote" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VideoStation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VideoStation" type="462c0819:PsiDirectoryNode" />
-              <item name="pilote" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="template" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VideoStation" type="b2602c69:ProjectViewProjectNode" />
@@ -269,7 +193,7 @@
       <workItem from="1547758283149" duration="83000" />
       <workItem from="1547801806627" duration="6083000" />
       <workItem from="1547892539652" duration="18000" />
-      <workItem from="1547976572697" duration="13738000" />
+      <workItem from="1547976572697" duration="14186000" />
     </task>
     <task id="LOCAL-00001" summary="supper">
       <created>1547193749881</created>
@@ -282,7 +206,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62147000" />
+    <option name="totallyTimeSpent" value="62595000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -418,13 +342,6 @@
     <entry file="file://$PROJECT_DIR$/silos/historiques/server/server.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pilote/view/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="543">
@@ -454,16 +371,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="180">
-            <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/silos/videos/server/api-playlist.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -578,13 +485,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="37" selection-start-column="37" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pilote/server/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="108" column="48" selection-start-line="108" selection-start-column="39" selection-end-line="108" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -738,6 +638,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pilote/view/js/package.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pilote/view/template/changepassword.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -749,13 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pilote/view/js/app.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="96" column="48" lean-forward="true" selection-start-line="96" selection-start-column="48" selection-end-line="96" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pilote/view/js/controller/changepassword.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -763,10 +663,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pilote/view/js/package.yml">
+    <entry file="file://$PROJECT_DIR$/pilote/view/js/app.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="43" />
+        <state relative-caret-position="73">
+          <caret line="96" column="48" lean-forward="true" selection-start-line="96" selection-start-column="48" selection-end-line="96" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pilote/server/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="128" column="32" selection-start-line="128" selection-start-column="20" selection-end-line="128" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="209">
+            <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

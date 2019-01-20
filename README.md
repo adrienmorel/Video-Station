@@ -83,7 +83,7 @@ You can run the servers independently, but you need them all to use the app comp
 |  `cd pilote`  | `cd silos/users` | `cd silos/videos` | `cd silos/historiques` |
 | `node app.js` |  `node app.js`   |  `node app.js`   |  `node app.js`   |
 
-Do not forget to launch the two MongoDB servers, one for each silos:
+Do not forget to launch the three MongoDB servers, one for each silos:
 
 |         Users          |         Video         |         Historique         |
 | :--------------------: | :-------------------: | :-------------------: |
