@@ -232,6 +232,38 @@ class API {
             values.type = req.body.valuesToUpdate.type;
             values.state = req.body.valuesToUpdate.state;
 
+
+            if (values.email === undefined &&
+                values.password === undefined &&
+                values.type === undefined &&
+                values.state === undefined) {
+                res.send(this.makeError("MISSING_PARAMS"));
+                return;
+            }
+
+            if(!(values.email === undefined)){
+                // email check
+                if (!check.string(values.email) ||
+                    !check.nonEmptyString(values.email) ||
+                    !check.match(email, /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+                ) {
+                    res.send(this.makeError("NOT_VALID_MAIL"));
+                    return;
+                }
+            }
+
+            if(!(values.password === undefined)){
+                // password check
+                if (!check.string(values.password) ||
+                    !check.nonEmptyString(values.password) ||
+                    !check.match(values.password, /^\s*(\S\s*){4,20}$/)
+                ) {
+                    res.send(this.makeError("NOT_VALID_PASSWORD"));
+                    return;
+                }
+            }
+
+
             // check params
             if (!id || values.length === 0) {
                 res.send(this.makeError("MISSING_PARAMS"));
@@ -248,6 +280,11 @@ class API {
                 })
                 .then(usersCollection => {
                     user = new User(usersCollection);
+                    if(!(values.password === undefined)) return bcrypt.hash(values.password, config.serverConfig.crypto.saltRound);
+                })
+                .then(passwordHashed => {
+                    if(!passwordHashed) return user.update(id, values);
+                    values.password = passwordHashed;
                     return user.update(id, values);
                 })
                 .then(updatedUser => {

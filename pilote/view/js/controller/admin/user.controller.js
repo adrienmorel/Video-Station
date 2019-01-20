@@ -3,9 +3,9 @@
 
     videoStation.controller("userController", userController);
 
-    userController.$inject = ["$scope", "$location", "$routeParams", "AdminFactory", "$mdToast"];
+    userController.$inject = ["$scope", "$location", "$routeParams", "AdminFactory", "$mdToast", "blockUI", "$mdDialog"];
 
-    function userController($scope, $location, $routeParams, AdminFactory, $mdToast) {
+    function userController($scope, $location, $routeParams, AdminFactory, $mdToast, blockUI, $mdDialog) {
         const vm = this;
         vm.id = $routeParams.id;
         vm.nothingChange = false;
@@ -28,6 +28,63 @@
 
         vm.gohistory = function (user) {
             $location.path(`admin/user/${user.id}/history`);
+        };
+
+        vm.changePassword = function (user){
+            $mdDialog.show({
+                controller: vm.popupPlaylistController,
+                templateUrl: '../template/admin/popup/changepassword.html',
+                parent: angular.element(document.body),
+                clickOutsideToClose:true,
+                fullscreen: vm.customFullscreen // Only for -xs, -sm breakpoints.
+            })
+            .then(function(answer) {
+            }, function() {
+            });
+
+        };
+
+        vm.popupPlaylistController = function DialogController($scope, $location, $routeParams, AdminFactory, $mdToast, blockUI, $mdDialog) {
+            $scope.updateUserPassWord = function(){
+                blockUI.start();
+                var valuesToUpdate = {};
+                valuesToUpdate.password = $scope.password;
+                AdminFactory.update(vm.id, valuesToUpdate)
+                    .then(response => {
+                        $mdDialog.cancel();
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .textContent('User password modify!')
+                                .position('bottom right')
+                                .hideDelay(3000)
+                        );
+                        console.log(response);
+                        vm.user = response.user;
+                        vm.type = vm.options.type.selected = {name: vm.user.type === 'USER' ? 'Utilisateur' : 'Administrateur', value: vm.user.type};
+                        vm.state = vm.options.state.selected = {name: vm.user.state ? 'Actif' : 'Inactif', value: vm.user.state};
+
+                        vm.email = vm.user.email;
+                    })
+                    .catch(error => {
+                        vm.errorRegister = error;
+                    })
+                    .then(function () {
+                        $scope.$apply(function () {
+                            blockUI.stop();
+                        });
+                    });
+            };
+            $scope.hide = function() {
+                $mdDialog.hide();
+            };
+
+            $scope.cancel = function() {
+                $mdDialog.cancel();
+            };
+
+            $scope.answer = function(answer) {
+                $mdDialog.hide(answer);
+            };
         };
 
         vm.updateUser = function () {
@@ -77,6 +134,8 @@
         };
 
 
+
+
         AdminFactory.get($routeParams.id)
             .then(response => {
                 console.log(response);
@@ -86,9 +145,6 @@
                 vm.type = vm.options.type.selected = {name: vm.user.type === 'USER' ? 'Utilisateur' : 'Administrateur', value: vm.user.type};
                 vm.state = vm.options.state.selected = {name: vm.user.state ? 'Actif' : 'Inactif', value: vm.user.state};
 
-                console.log(vm.type);
-                console.log(vm.state);
-                console.log(vm.user);
             })
             .catch(error => {
                 console.log(error);
@@ -107,20 +163,5 @@
                 $scope.$apply();
             });
 
-        const arraysEqual = function (a, b) {
-            if (a === b) return true;
-            if (a == null || b == null) return false;
-            if (a.length != b.length) return false;
-
-            // If you don't care about the order of the elements inside
-            // the array, you should sort both arrays here.
-            // Please note that calling sort on an array will modify that array.
-            // you might want to clone your array first.
-
-            for (var i = 0; i < a.length; ++i) {
-                if (a[i] !== b[i]) return false;
-            }
-            return true;
-        }
     }
 })();
