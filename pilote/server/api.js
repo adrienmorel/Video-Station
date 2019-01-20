@@ -1,6 +1,8 @@
 const express = require("express");
 const axios = require("axios");
 
+const nodemailer = require("nodemailer");
+
 
 const router = express.Router();
 const config = require(`${process.cwd()}/config/config`);
@@ -757,6 +759,91 @@ class API {
                     res.send(that.makeError(error.message));
                 });
         });
+
+		this.router.get(`/${silosConfig.user.endpoints.user}/get`, (req, res) => {
+				var that = this;
+
+				axios
+					.get(
+						that.makeFullEndpoint(
+							silosConfig.user,
+							silosConfig.user.endpoints.user,
+							"get"
+						),
+						{
+							params: {
+								token: req.body.token
+							}
+						}
+					)
+					.then(function(response) {
+						res.json(response.data);
+					})
+					.catch(function(error) {
+						res.send(that.makeError(error.message));
+					});
+			});
+
+		this.router.post(`/${silosConfig.user.endpoints.user}/changepassword`, (req, res) => {
+			var that = this;
+
+			var email = req.body.email;
+			var token = Token.create(req.body.token.id);
+			var url = "https://localhost:8080/#!/changepassword/" + token;
+			var html = '<b>Hello !</b><br> You can change your password with this url : <a href="'+url+'">here</a>';
+
+			// Create the transporter with the required configuration for Outlook
+			// change the user and pass !
+			var transporter = nodemailer.createTransport({
+				service: 'hotmail',
+				auth: {
+					user: 'no-reply-video-station@outlook.fr',
+					pass: 'video-station'
+				}
+			});
+
+			// setup e-mail data, even with unicode symbols
+			var mailOptions = {
+				from: '"Our Code World " <no-reply-video-station@outlook.fr>', // sender address (who sends)
+				to: email, // list of receivers (who receives)
+				subject: 'Change password in video-station ', // Subject line
+				html: html
+			};
+
+			// send mail with defined transport object
+			transporter.sendMail(mailOptions, function(error, info){
+				if(error){
+					res.send(that.makeError(error));
+
+				}
+				res.send(that.makeSuccess(info.response));
+			});
+
+		});
+
+		this.router.post(`/${silosConfig.user.endpoints.user}/update`, (req, res) => {
+			var that = this;
+
+			axios
+				.post(
+					that.makeFullEndpoint(
+						silosConfig.user,
+						silosConfig.user.endpoints.user,
+						"update"
+					),
+					{
+						token: req.body.token,
+						valuesToUpdate : req.body.valuesToUpdate
+
+					}
+				)
+				.then(function(response) {
+					res.json(response.data);
+				})
+				.catch(function(error) {
+					res.send(that.makeError(error.message));
+				});
+		});
 
 
 

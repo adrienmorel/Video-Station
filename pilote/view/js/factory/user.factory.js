@@ -31,10 +31,22 @@
 			get isActif(){
 				return actif;
 			},
-			verify
+			verify,
+			get,
+			changePassword,
+			verifyTokenChangePassword,
+			update
 		};
 		
 		return services;
+
+		function changePassword(email) {
+			return appAPI.post(makeEndpoint('changepassword'), {email: email});
+		}
+
+		function update(valuesToUpdate) {
+			return appAPI.post(makeEndpoint("update"), {valuesToUpdate: valuesToUpdate});
+		}
 
 		function login(email, password) {
             adminState = false;
@@ -84,6 +96,12 @@
 				return Promise.resolve(error);
 			});
 		}
+
+
+		function verifyTokenChangePassword(token){
+			return appAPI
+				.post(makeEndpoint("verifyTokenChangePassword"), {token : token});
+		}
 		
 		function register(email, password) {
 			return appAPI
@@ -104,6 +122,11 @@
 					return Promise.reject("An unknow error occured.");
 				}
 			});
+		}
+		
+		function get() {
+			return appAPI
+				.get(makeEndpoint("get"), {});
 		}
 	}
 })();

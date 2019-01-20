@@ -19,6 +19,8 @@ files:
   - controller/homePlaylist.controller.js
   - controller/playlist.controller.js
   - controller/account.controller.js
+  - controller/historique.controller.js
+  - controller/changepassword.controller.js
   - controller/admin/application.controller.js
   - controller/admin/historyOfUsercontroller.js
   - controller/admin/user.controller.js

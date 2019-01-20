@@ -84,12 +84,6 @@ class User {
 
         if (values.password !== undefined) {
             valuesToUpdate.password = values.password;
-            if (!check.string(values.password) ||
-                !check.nonEmptyString(values.password) ||
-                !check.match(values.password, /^\s*(\S\s*){4,20}$/)
-            ) {
-                return Promise.reject(new Error("INVALID_PASSWORD_FORMAT"));
-            }
         }
 
         var myQuery = {_id: new ObjectID(userID)};

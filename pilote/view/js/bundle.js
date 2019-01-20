@@ -165,10 +165,22 @@ const videoStation = angular.module("videoStation", ["ngRoute", "ngSanitize", "n
 			get isActif(){
 				return actif;
 			},
-			verify
+			verify,
+			get,
+			changePassword,
+			verifyTokenChangePassword,
+			update
 		};
 		
 		return services;
+
+		function changePassword(email) {
+			return appAPI.post(makeEndpoint('changepassword'), {email: email});
+		}
+
+		function update(valuesToUpdate) {
+			return appAPI.post(makeEndpoint("update"), {valuesToUpdate: valuesToUpdate});
+		}
 
 		function login(email, password) {
             adminState = false;
@@ -218,6 +230,12 @@ const videoStation = angular.module("videoStation", ["ngRoute", "ngSanitize", "n
 				return Promise.resolve(error);
 			});
 		}
+
+
+		function verifyTokenChangePassword(token){
+			return appAPI
+				.post(makeEndpoint("verifyTokenChangePassword"), {token : token});
+		}
 		
 		function register(email, password) {
 			return appAPI
@@ -238,6 +256,11 @@ const videoStation = angular.module("videoStation", ["ngRoute", "ngSanitize", "n
 					return Promise.reject("An unknow error occured.");
 				}
 			});
+		}
+		
+		function get() {
+			return appAPI
+				.get(makeEndpoint("get"), {});
 		}
 	}
 })();
@@ -1268,14 +1291,118 @@ const videoStation = angular.module("videoStation", ["ngRoute", "ngSanitize", "n
             });
     }
 })();
-(function() {
+(function () {
     "use strict";
 
     videoStation.controller("accountController", accountController);
 
-    accountController.$inject = ["$scope", "$location", "$routeParams", "HistoriqueFactory"];
+    accountController.$inject = ["$scope", "$location", "$routeParams", "UserFactory", "$mdDialog", "blockUI"];
 
-    function accountController($scope, $location, $routeParams, HistoriqueFactory) {
+    function accountController($scope, $location, $routeParams, UserFactory, $mdDialog, blockUI) {
+        const vm = this;
+        vm.id = $routeParams.id;
+
+        vm.options = {};
+        vm.form = {};
+        vm.options.type = {
+            available: [
+                {name: 'Administrateur', value: 'ADMIN'},
+                {name: 'Utilisateur', value: 'USER'}
+            ]
+        };
+        vm.options.state = {
+            available: [
+                {name: 'Actif', value: true},
+                {name: 'Inactif', value: false}
+            ]
+        };
+
+
+        vm.gohistory = function () {
+            $location.path(`account/historique`);
+        };
+
+
+        vm.changePassword = function() {
+            // Appending dialog to document.body to cover sidenav in docs app
+            var confirm = $mdDialog.confirm()
+                .title('Would you like to change your password ?')
+                .textContent('An email will be sent to ' + vm.email)
+                .ariaLabel('Lucky day')
+                .ok('Yes')
+                .cancel('No');
+
+            $mdDialog.show(confirm).then(function() {
+                blockUI.start();
+                UserFactory.changePassword(vm.email)
+                    .then(response => {
+                        blockUI.stop();
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                                .clickOutsideToClose(true)
+                                .title('Mail send')
+                                .textContent('The email have been send')
+                                .ariaLabel('Alert Dialog Demo')
+                                .ok('Ok')
+                        );
+                    })
+                    .catch(error => {
+                        blockUI.stop();
+                        $mdDialog.show(
+                            $mdDialog.alert()
+                                .clickOutsideToClose(true)
+                                .title('Error : mail not send')
+                                .textContent('We cant send a email')
+                                .ariaLabel('Alert Dialog Demo')
+                                .ok('Ok!')
+
+                        );
+                    });
+            }, function() {
+            });
+        };
+
+
+        UserFactory.get()
+            .then(response => {
+                console.log(response);
+                vm.user = response.user;
+
+                vm.email = vm.user.email;
+                vm.type = vm.options.type.selected = {name: vm.user.type === 'USER' ? 'Utilisateur' : 'Administrateur', value: vm.user.type};
+                vm.state = vm.options.state.selected = {name: vm.user.state ? 'Actif' : 'Inactif', value: vm.user.state};
+
+                console.log(vm.type);
+                console.log(vm.state);
+                console.log(vm.user);
+            })
+            .catch(error => {
+                console.log(error);
+                switch (error) {
+                    case "USER_NOT_FOUND":
+                        vm.errorUser = error;
+                        break;
+                    case "HISTORIQUE_NOT_FOUND":
+                        vm.errorHistorique = error;
+                        break;
+                    default:
+                        vm.error = error;
+                }
+            })
+            .then(function () {
+                $scope.$apply();
+            });
+
+    }
+})();
+(function() {
+    "use strict";
+
+    videoStation.controller("historiqueController", historiqueController);
+
+    historiqueController.$inject = ["$scope", "$location", "$routeParams", "HistoriqueFactory"];
+
+    function historiqueController($scope, $location, $routeParams, HistoriqueFactory) {
         const vm = this;
         vm.test = 3;
 
@@ -1314,6 +1441,67 @@ const videoStation = angular.module("videoStation", ["ngRoute", "ngSanitize", "n
             .then(function() {
                 $scope.$apply();
             });
+
+    }
+})();
+(function () {
+    "use strict";
+
+    videoStation.controller("changepasswordController", changepasswordController);
+
+    changepasswordController.$inject = ["$scope", "$location", "$routeParams", "UserFactory", "$mdDialog", "blockUI", "appAPI"];
+
+    function changepasswordController($scope, $location, $routeParams, UserFactory, $mdDialog, blockUI, appAPI) {
+        const vm = this;
+        var token = $routeParams.token;
+
+        var init = function () {
+            blockUI.start();
+            UserFactory.verifyTokenChangePassword(token)
+                .then(response => {
+                    vm.tokenValidate = true;
+                    appAPI.setToken(token);
+                    $scope.$apply(function () {
+                        blockUI.stop();
+                    });
+                    console.log(response)
+                })
+                .catch(error => {
+                    vm.tokenValidate = false;
+                    $scope.$apply(function () {
+                        blockUI.stop();
+                    });
+                    console.log(error);
+                })
+
+        };
+
+        vm.updatePassword = function() {
+            blockUI.stop();
+
+            vm.loadingClass = "is-loading";
+
+
+            var values = {
+                password : vm.password
+            };
+
+            UserFactory.update(values)
+                .then(response => {
+                    $location.path("/login");
+                })
+                .catch(error => {
+                    vm.errorRegister = error;
+                })
+                .then(function() {
+                    vm.loadingClass = "";
+                    $scope.$apply(function () {
+                        blockUI.stop();
+                    });
+                });
+        };
+
+        init();
 
     }
 })();
@@ -1671,6 +1859,28 @@ const videoStation = angular.module("videoStation", ["ngRoute", "ngSanitize", "n
                 title: 'Compte',
                 templateUrl: "template/account.html",
                 controller: "accountController",
+                controllerAs: "vm",
+                resolve: {
+                    access: ["Access", function (Access) {
+                        return Access.isAuthenticated();
+                    }],
+                }
+            })
+            .when("/changepassword/:token", {
+                title: 'Change password',
+                templateUrl: "template/changepassword.html",
+                controller: "changepasswordController",
+                controllerAs: "vm",
+                resolve: {
+                    access: ["Access", function (Access) {
+                        return Access.isAnonymous();
+                    }],
+                }
+            })
+            .when("/account/historique", {
+                title: 'Historique',
+                templateUrl: "template/historique.html",
+                controller: "historiqueController",
                 controllerAs: "vm",
                 resolve: {
                     access: ["Access", function (Access) {

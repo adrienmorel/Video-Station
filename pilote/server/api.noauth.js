@@ -115,6 +115,31 @@ class APINoAuth {
 			}
 		);
 
+		this.router.post(
+			`/${silosConfig.user.endpoints.user}/verifyTokenChangePassword`,
+			(req, res) => {
+				var that = this;
+
+				var token = req.body.token;
+
+				if (!token) {
+					res.send(that.makeError("MISSING_PARAMS"));
+					return;
+				}
+
+				Token.verify(token)
+					.then(function(tokenDecoded) {
+						// if everything is good, save to request for use in other routes
+						return res.send(that.makeSuccess(tokenDecoded));
+					})
+					.catch(function(error) {
+						console.log(`Token error: ${error.message}`);
+						return res.send(that.makeError("BAD_TOKEN"));
+					});
+
+			}
+		);
+
 
 	}
 	

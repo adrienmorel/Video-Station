@@ -102,6 +102,28 @@
                     }],
                 }
             })
+            .when("/changepassword/:token", {
+                title: 'Change password',
+                templateUrl: "template/changepassword.html",
+                controller: "changepasswordController",
+                controllerAs: "vm",
+                resolve: {
+                    access: ["Access", function (Access) {
+                        return Access.isAnonymous();
+                    }],
+                }
+            })
+            .when("/account/historique", {
+                title: 'Historique',
+                templateUrl: "template/historique.html",
+                controller: "historiqueController",
+                controllerAs: "vm",
+                resolve: {
+                    access: ["Access", function (Access) {
+                        return Access.isAuthenticated();
+                    }],
+                }
+            })
             .when("/admin/application", {
                 title: 'Application',
                 templateUrl: "template/admin/application.html",
